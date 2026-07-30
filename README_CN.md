@@ -1,5 +1,5 @@
 # DEEPRobotics Message
-1个CAN口要控制12个电机，发送频率最好选择为0.25kHz，并且每两数据帧之间插入 200us 延时。
+
 [English](README.md) | **简体中文**
 
 ## 项目简介
