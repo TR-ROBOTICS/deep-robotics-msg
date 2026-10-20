@@ -8,6 +8,24 @@ This repository provides public ROS 2 message and service interfaces used by DEE
 
 This repository contains only `msg/` and `srv/` interface definitions. After being built or installed, these interfaces are available to other projects as the ROS 2 package `drdds`.
 
+## TR-ROBOTICS Fork
+
+This repository is a fork of
+[DeepRoboticsLab/deep-robotics-msg](https://github.com/DeepRoboticsLab/deep-robotics-msg)
+maintained by TR Robotics for the M20 deployment. On top of the upstream interfaces it adds two
+messages mirroring the M20 SDK install (`/opt/ros/foxy/share/drdds`):
+
+| Message | Purpose |
+| --- | --- |
+| `drdds/msg/CpuData` | PC4 CPU telemetry published by the M20 base on `/CPU_104` |
+| `drdds/msg/CpuDataValue` | Per core/sensor temperature (hundredths of a degree Celsius) and per core frequency (MHz) |
+
+They are added to this package (not to a separate one) so the generated type names stay
+`drdds/msg/CpuData` and `drdds/msg/CpuDataValue`. Those type names are part of the DDS wire
+contract with the M20 base firmware, so a different package name would stop the base's topics
+from decoding. See the M20 deployment repository (`docs/DRDDS.md`) for the wire-compatibility
+rules and the upstream update procedure.
+
 ## Supported Environments
 
 | Ubuntu | ROS 2 |
